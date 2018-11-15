@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [DomainObject1.cs](./CS/Solution1.Module/BusinessObjects/DomainObject1.cs) (VB: [DomainObject1.vb](./VB/Solution1.Module/BusinessObjects/DomainObject1.vb))
+* [Updater.cs](./CS/Solution1.Module/DatabaseUpdate/Updater.cs) (VB: [Updater.vb](./VB/Solution1.Module/DatabaseUpdate/Updater.vb))
+* [Program.cs](./CS/WorkflowServerService2/Program.cs) (VB: [Program.vb](./VB/WorkflowServerService2/Program.vb))
+* [WorkflowServerService.cs](./CS/WorkflowServerService2/WorkflowServerService.cs) (VB: [WorkflowServerService.vb](./VB/WorkflowServerService2/WorkflowServerService.vb))
+<!-- default file list end -->
 # How to review XAF WorkflowServer performance?
 
 
