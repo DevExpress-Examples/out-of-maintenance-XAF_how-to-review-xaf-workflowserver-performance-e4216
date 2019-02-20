@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.ComponentModel
 
 Imports DevExpress.Xpo
@@ -11,9 +10,10 @@ Imports DevExpress.Persistent.BaseImpl
 Imports DevExpress.Persistent.Validation
 
 Namespace Solution1.Module.BusinessObjects
-	<DefaultClassOptions> _
+	<DefaultClassOptions>
 	Public Class Note
 		Inherits BaseObject
+
 		Public Sub New(ByVal session As Session)
 			MyBase.New(session)
 			' This constructor is used when an object is loaded from a persistent storage.
@@ -41,9 +41,10 @@ Namespace Solution1.Module.BusinessObjects
 		End Property
 	End Class
 
-	<DefaultClassOptions> _
+	<DefaultClassOptions>
 	Public Class Task
 		Inherits BaseObject
+
 		Public Sub New(ByVal session As Session)
 			MyBase.New(session)
 			' This constructor is used when an object is loaded from a persistent storage.
@@ -53,12 +54,12 @@ Namespace Solution1.Module.BusinessObjects
 			' }
 			' or as an alternative, move your initialization code into the AfterConstruction method.
 		End Sub
-		Public Property CreatedOn() As DateTime
+		Public Property CreatedOn() As Date
 			Get
-				Return GetPropertyValue(Of DateTime)("CreatedOn")
+				Return GetPropertyValue(Of Date)("CreatedOn")
 			End Get
-			Set(ByVal value As DateTime)
-				SetPropertyValue(Of DateTime)("CreatedOn", value)
+			Set(ByVal value As Date)
+				SetPropertyValue(Of Date)("CreatedOn", value)
 			End Set
 		End Property
 		Public Property Name() As String
@@ -87,9 +88,10 @@ Namespace Solution1.Module.BusinessObjects
 		End Property
 	End Class
 
-	<DefaultClassOptions> _
+	<DefaultClassOptions>
 	Public Class TaskType
 		Inherits BaseObject
+
 		Public Sub New(ByVal session As Session)
 			MyBase.New(session)
 		End Sub

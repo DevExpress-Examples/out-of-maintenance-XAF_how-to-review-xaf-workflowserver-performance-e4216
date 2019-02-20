@@ -1,6 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Namespace WorkflowServerService2
+﻿Namespace WorkflowServerService2
 	Partial Public Class ProjectInstaller
 		''' <summary>
 		''' Required designer variable.

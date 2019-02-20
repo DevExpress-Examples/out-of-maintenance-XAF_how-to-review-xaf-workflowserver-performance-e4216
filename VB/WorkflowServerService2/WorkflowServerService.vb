@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Configuration
 Imports System.Collections.Generic
 Imports System.ComponentModel
@@ -41,7 +40,9 @@ Namespace WorkflowServerService2
 			If ConfigurationManager.ConnectionStrings("ConnectionString") IsNot Nothing Then
 				serverApplication.ConnectionString = ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
 			End If
-			AddHandler serverApplication.CreateCustomObjectSpaceProvider, Function(sender, e) AnonymousMethod1(sender, e)
+			AddHandler serverApplication.CreateCustomObjectSpaceProvider, Sub(sender As Object, e As CreateCustomObjectSpaceProviderEventArgs)
+				e.ObjectSpaceProvider = New XPObjectSpaceProvider(e.ConnectionString, e.Connection)
+			End Sub
 			serverApplication.Setup()
 			serverApplication.Logon()
 
@@ -53,26 +54,15 @@ Namespace WorkflowServerService2
 			server.StartWorkflowByRequestService.RequestsDetectionPeriod = TimeSpan.FromSeconds(15)
 			server.RefreshWorkflowDefinitionsService.DelayPeriod = TimeSpan.FromMinutes(15)
 
-			AddHandler server.CustomizeHost, Function(sender, e) AnonymousMethod2(sender, e)
+			AddHandler server.CustomizeHost, Sub(sender As Object, e As CustomizeHostEventArgs)
+				e.WorkflowInstanceStoreBehavior.RunnableInstancesDetectionPeriod = TimeSpan.FromSeconds(15)
+			End Sub
 
-			AddHandler server.CustomHandleException, Function(sender, e) AnonymousMethod3(sender, e)
+			AddHandler server.CustomHandleException, Sub(sender As Object, e As CustomHandleServiceExceptionEventArgs)
+				Tracing.Tracer.LogError(e.Exception)
+				Console.WriteLine(e.Exception.Message)
+				e.Handled = False
+			End Sub
 		End Sub
-		
-		Private Function AnonymousMethod1(ByVal sender As Object, ByVal e As CreateCustomObjectSpaceProviderEventArgs) As Boolean
-			e.ObjectSpaceProvider = New XPObjectSpaceProvider(e.ConnectionString, e.Connection)
-			Return True
-		End Function
-		
-		Private Function AnonymousMethod2(ByVal sender As Object, ByVal e As CustomizeHostEventArgs) As Boolean
-			e.WorkflowInstanceStoreBehavior.RunnableInstancesDetectionPeriod = TimeSpan.FromSeconds(15)
-			Return True
-		End Function
-		
-		Private Function AnonymousMethod3(ByVal sender As Object, ByVal e As CustomHandleServiceExceptionEventArgs) As Boolean
-			Tracing.Tracer.LogError(e.Exception)
-			Console.WriteLine(e.Exception.Message)
-			e.Handled = False
-			Return True
-		End Function
 	End Class
 End Namespace

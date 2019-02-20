@@ -1,6 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
-Namespace Solution1.Win
+﻿Namespace Solution1.Win
 	Partial Public Class Solution1WindowsFormsApplication
 		''' <summary> 
 		''' Required designer variable.
@@ -37,7 +35,8 @@ Namespace Solution1.Win
 			' 
 			' sqlConnection1
 			' 
-			Me.sqlConnection1.ConnectionString = "Integrated Security=SSPI;Pooling=false;Data Source=.\SQLEXPRESS;Initial Catalog=S" & "olution1"
+			Me.sqlConnection1.ConnectionString = "Integrated Security=SSPI;Pooling=false;Data Source=.\SQLEXPRESS;Initial Catalog=S" &
+	"olution1"
 			Me.sqlConnection1.FireInfoMessageEventOnUserErrors = False
 			' 
 			' workflowModule1
@@ -61,7 +60,8 @@ Namespace Solution1.Win
 			Me.Modules.Add(Me.conditionalAppearanceModule1)
 			Me.Modules.Add(Me.workflowModule1)
 			Me.Modules.Add(Me.workflowWindowsFormsModule1)
-'			Me.DatabaseVersionMismatch += New System.EventHandler(Of DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs)(Me.Solution1WindowsFormsApplication_DatabaseVersionMismatch);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.Solution1WindowsFormsApplication_DatabaseVersionMismatch);
 			CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
 		End Sub
